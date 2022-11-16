@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyImage
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
