@@ -1,12 +1,10 @@
-package com.example.gdgjetpackcomposeconsumingapi_msql.gdgscreens
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -15,14 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgComponents.MyButton
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgComponents.MyImage
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgComponents.MyTextfield
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgModele.ResponseModel
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgservices.ApiService
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

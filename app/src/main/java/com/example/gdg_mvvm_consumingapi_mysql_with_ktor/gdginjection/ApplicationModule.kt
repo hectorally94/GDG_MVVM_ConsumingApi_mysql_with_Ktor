@@ -1,5 +1,9 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdginjection
 
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.repository.DomainRepository
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.networks.ApiServiceImpl
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.repository.DomainRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,10 +13,6 @@ import io.ktor.client.engine.android.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
-import xyz.teamgravity.postsktorclient.data.remote.PostsApi
-import xyz.teamgravity.postsktorclient.data.remote.PostsApiImpl
-import xyz.teamgravity.postsktorclient.data.repository.PostsRepositoryImpl
-import xyz.teamgravity.postsktorclient.domain.repository.PostsRepository
 import javax.inject.Singleton
 
 @Module
@@ -33,8 +33,8 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun providePostsApi(client: HttpClient): PostsApi = PostsApiImpl(client)
+    fun provideApi(client: HttpClient): ApiService = ApiServiceImpl(client)
 
     @Provides
-    fun providePostsRepository(api: PostsApi): PostsRepository = PostsRepositoryImpl(api)
+    fun provideRepository(api: ApiService): DomainRepository = DomainRepositoryImpl(api)
 }

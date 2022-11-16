@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.MainViewModel
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.ui.theme.GDG_MVVM_ConsumingApi_mysql_with_KtorTheme
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.teamgravity.postsktorclient.presentation.ui.theme.PostsKtorClientTheme
 
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
             val viewmodel = hiltViewModel<MainViewModel>()
             val state = viewmodel.state.value
 
-            PostsKtorClientTheme {
+            GDG_MVVM_ConsumingApi_mysql_with_KtorTheme() {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()

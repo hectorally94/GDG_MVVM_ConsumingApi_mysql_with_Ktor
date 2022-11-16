@@ -1,9 +1,10 @@
-package xyz.teamgravity.postsktorclient.presentation
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation
 
-import xyz.teamgravity.postsktorclient.domain.model.PostModel
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
+
 
 data class PostsState(
-    val posts: List<PostModel>? = null,
+    val posts: List<GdgModel>? = null,
     val loading: Boolean = false,
     val error: String? = null
 )

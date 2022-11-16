@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgscreens.Addgdgmember
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgscreens.Detailsmember
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgscreens.Splash
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Addgdgmember
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Detailsmember
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Splash
 
 @Composable
 fun NavigationScreens(){

@@ -1,4 +1,4 @@
-package com.example.gdgjetpackcomposeconsumingapi_msql.gdgscreens
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens
 
 import android.util.Log
 import androidx.compose.foundation.layout.*
@@ -8,9 +8,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgComponents.MyButton
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgComponents.MyTextfield
-import com.example.gdgjetpackcomposeconsumingapi_msql.gdgservices.ApiService
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
