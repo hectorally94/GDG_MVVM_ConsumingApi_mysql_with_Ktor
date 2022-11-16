@@ -37,9 +37,9 @@ class GgdViewModel @Inject constructor(private val domainRepository: DomainRepos
         }.launchIn(viewModelScope)
     }
 
-    fun add(name:String,description:String) = viewModelScope.launch { domainRepository.addgdgmembers(name,description) }
-    fun update(id: String,name:String, description:String) = viewModelScope.launch { domainRepository.editgdgmembers(id,name,description) }
-    fun remove(id:String) = viewModelScope.launch { domainRepository.Detelegdgmembers(id) }
+    fun addgdgmembers(name:String,description:String) = viewModelScope.launch { domainRepository.addgdgmembers(name,description) }
+    fun editgdgmembers(id: String,name:String, description:String) = viewModelScope.launch { domainRepository.editgdgmembers(id,name,description) }
+    fun Detelegdgmembers(id:String) = viewModelScope.launch { domainRepository.Detelegdgmembers(id) }
 
 
 }
