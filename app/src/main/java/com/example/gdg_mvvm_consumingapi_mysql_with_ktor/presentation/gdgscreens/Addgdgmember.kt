@@ -116,7 +116,8 @@ fun GdgmemberRow(
     navController: NavController,
     modifier: Modifier = Modifier,
     gdgMember: GdgModel,
-    onGdgmemberClicked: (id: String) -> Unit) {
+    onGdgmemberClicked: (id: String) -> Unit
+) {
     Surface(modifier
         .padding(4.dp)
         .clip(RoundedCornerShape(topEnd = 33.dp, bottomStart = 33.dp))

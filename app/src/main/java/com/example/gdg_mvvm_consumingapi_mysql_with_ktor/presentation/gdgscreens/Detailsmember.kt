@@ -24,7 +24,10 @@ DetailsmemberContent(navController = navController,idshared,nameshared,descripti
 }
 
 @Composable
-private fun DetailsmemberContent(navController: NavController, idshared:String?,nameshared:String?,descriptionshared:String?) {
+private fun DetailsmemberContent(navController: NavController,
+                                 idshared:String?,
+                                 nameshared:String?,
+                                 descriptionshared:String?) {
     val coroutineScope = rememberCoroutineScope()
     if (idshared != null) {
         Log.d("idshared",idshared)

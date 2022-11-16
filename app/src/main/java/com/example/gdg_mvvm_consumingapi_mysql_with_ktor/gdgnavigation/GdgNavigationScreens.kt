@@ -37,6 +37,7 @@ fun NavigationScreens(){
                 backStackEntry.arguments?.getString("id"),
                 backStackEntry.arguments?.getString("name"),
                 backStackEntry.arguments?.getString("description")
+
             )
         }
     }
