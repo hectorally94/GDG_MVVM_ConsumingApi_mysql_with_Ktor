@@ -26,16 +26,15 @@ import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyImage
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
 import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @Composable
 fun Addgdgmember(
     navController: NavController,
     gdgmembers: List<GdgModel>,
-    onAddgdgmember: (name:String,description:String)-> Unit ,
-    onRemovegdgmember: (id:String) -> Unit ) {
+    onAddgdgmember: (name:String,description:String) -> Unit,
+    onRemovegdgmember: (id:String ) -> Unit
+)
+{
 
     val textfullname = remember { mutableStateOf("") }
     val textSpecialization = remember { mutableStateOf("") }
@@ -139,4 +138,5 @@ fun GdgmemberRow(
         }
     }
 }
+
 

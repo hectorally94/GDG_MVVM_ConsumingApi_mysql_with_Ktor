@@ -18,7 +18,9 @@ import kotlinx.coroutines.withContext
 @Composable
 fun Detailsmember(
            navController: NavController,
-             idshared:String?,nameshared:String?,descriptionshared:String?) {
+             idshared:String?,
+           nameshared:String?,
+           descriptionshared:String?) {
 
 DetailsmemberContent(navController = navController,idshared,nameshared,descriptionshared)
 }
