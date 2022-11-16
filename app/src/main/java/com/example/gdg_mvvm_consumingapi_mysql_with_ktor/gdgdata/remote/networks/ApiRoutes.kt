@@ -1,4 +1,4 @@
-package com.example.gdgjetpackcomposeconsumingapi_msql.gdgnetworks
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.networks
 
 object ApiRoutes {
     private const val BASE_URL = "http://192.168.0.49/jetpackCompose" //jOb IP

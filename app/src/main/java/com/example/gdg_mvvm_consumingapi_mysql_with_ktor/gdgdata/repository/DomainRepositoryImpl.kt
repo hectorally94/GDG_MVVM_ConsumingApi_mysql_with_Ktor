@@ -1,15 +1,9 @@
-package xyz.teamgravity.postsktorclient.data.repository
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import xyz.teamgravity.postsktorclient.common.Resource
-import xyz.teamgravity.postsktorclient.data.remote.PostsApi
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.dto.PostDto
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.dto.toPost
-import xyz.teamgravity.postsktorclient.domain.model.PostModel
-import xyz.teamgravity.postsktorclient.domain.repository.PostsRepository
 
-class PostsRepositoryImpl(private val api: PostsApi) : PostsRepository {
+class DomainRepositoryImpl {
 
     override fun getPosts(): Flow<Resource<List<PostModel>>> = flow {
         try {
@@ -30,4 +24,5 @@ class PostsRepositoryImpl(private val api: PostsApi) : PostsRepository {
             emit(Resource.Error(e.message ?: "Error"))
         }
     }
+
 }

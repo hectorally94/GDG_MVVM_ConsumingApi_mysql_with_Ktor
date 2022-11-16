@@ -1,4 +1,4 @@
-package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.ui.theme
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
