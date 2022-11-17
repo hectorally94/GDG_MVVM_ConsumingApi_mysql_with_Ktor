@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Addgdgmember
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Detailsmember
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Splash
@@ -23,9 +24,9 @@ fun NavigationScreens(){
         composable(Gdgscreens.Addgdgmember.name){
             Addgdgmember(
                 navController =navController,
-                gdgmembers = emptyList(),
-                onAddgdgmember = { ("p"),(h) },
-                onRemovegdgmember={ id }
+                gdgmembers = emptyList<GdgModel>(),
+                onAddgdgmember = { name, description -> name + description },
+                onRemovegdgmember={ id ->id}
             )
         }
         ////

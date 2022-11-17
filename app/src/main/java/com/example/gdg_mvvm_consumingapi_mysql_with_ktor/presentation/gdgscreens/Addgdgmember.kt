@@ -31,8 +31,8 @@ import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
 fun Addgdgmember(
     navController: NavController,
     gdgmembers: List<GdgModel>,
-    onAddgdgmember: (name:String,description:String) -> Unit,
-    onRemovegdgmember: (id:String ) -> Unit
+    onAddgdgmember: (name:String, description:String ) ->String,
+    onRemovegdgmember: (id:String ) -> String
 )
 {
 
