@@ -1,11 +1,13 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
@@ -17,20 +19,13 @@ import kotlinx.coroutines.withContext
 
 @Composable
 fun Detailsmember(
-           navController: NavController,
-             idshared:String?,
-           nameshared:String?,
-           descriptionshared:String?) {
+    navController: NavController,
+    idshared:String?,
+    nameshared:String?,
+    descriptionshared:String?,
+    onEditgdgmember: (id:String,name:String,description:String) -> String
+) {
 
-DetailsmemberContent(navController = navController,idshared,nameshared,descriptionshared)
-}
-
-@Composable
-private fun DetailsmemberContent(navController: NavController,
-                                 idshared:String?,
-                                 nameshared:String?,
-                                 descriptionshared:String?) {
-    val coroutineScope = rememberCoroutineScope()
     if (idshared != null) {
         Log.d("idshared",idshared)
     }
@@ -48,6 +43,8 @@ private fun DetailsmemberContent(navController: NavController,
     ) {
         var textfullname = remember { mutableStateOf(nameshared) }
         val textSpecialization = remember { mutableStateOf(descriptionshared) }
+        val context = LocalContext.current
+
 
         MyTextfield(
             modifier = Modifier
@@ -78,16 +75,18 @@ private fun DetailsmemberContent(navController: NavController,
             modifier =Modifier.width(120.dp).height(70.dp),
             text = "Update Member",
             onClick = {
-                coroutineScope.launch {
-                    withContext(Dispatchers.IO) {
-                        try {
-                            if (idshared != null) {
-                                ApiService.create().editgdgmembers(idshared,textfullname.value.toString(),textSpecialization.value.toString())
-                            }
-                        } catch (e: Exception) {
-                            // handle exception
-                        }
+                if (textfullname.toString().isNotEmpty() && textSpecialization.toString().isNotEmpty()) {
+                    if (idshared != null) {
+                        onEditgdgmember(
+                            idshared,
+                            textfullname.toString(),
+                            textSpecialization.toString()
+                        )
                     }
+                    textfullname.value = ""
+                    textSpecialization.value = ""
+                    Toast.makeText(context, "Member Edited",
+                        Toast.LENGTH_SHORT).show()
                 }
             }
         )

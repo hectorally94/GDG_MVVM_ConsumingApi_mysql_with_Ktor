@@ -10,10 +10,11 @@ import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgMode
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Addgdgmember
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Detailsmember
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens.Splash
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels.GgdViewModel
 import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
 
 @Composable
-fun NavigationScreens(){
+fun NavigationScreens(ggdViewModel: GgdViewModel){
     val navController= rememberNavController()
 
     NavHost(navController = navController, startDestination = Gdgscreens.Splash.name){
@@ -28,6 +29,12 @@ fun NavigationScreens(){
                 onAddgdgmember = { name, description -> name + description },
                 onRemovegdgmember={ id ->id}
             )
+
+            NoteScreen(notes = notesList,
+                onRemoveNote = { ggdViewModel.removeNote(it) },
+                onAddNote = { ggdViewModel.addNote(it) }
+            )
+
         }
         ////
         composable(
@@ -38,11 +45,15 @@ fun NavigationScreens(){
             ))
         {
                 backStackEntry ->
-            Detailsmember(navController = navController,
+            Detailsmember(
+                navController = navController,
                 backStackEntry.arguments?.getString("id"),
                 backStackEntry.arguments?.getString("name"),
-                backStackEntry.arguments?.getString("description")
+                backStackEntry.arguments?.getString("description"),
+                onEditgdgmember= { ggdViewModel.editgdgmembers("","","") }
+
             )
+            // onEditgdgmember = {id, name, description -> id + name + description },
         }
 
     }

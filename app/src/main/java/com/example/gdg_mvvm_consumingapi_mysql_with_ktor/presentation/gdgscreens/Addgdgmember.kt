@@ -1,6 +1,7 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgscreens
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -19,12 +20,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.R
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyImage
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels.GgdViewModel
 import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
 
 @Composable
@@ -36,10 +39,13 @@ fun Addgdgmember(
 )
 {
 
+    val viewmodel = hiltViewModel<GgdViewModel>()
+    val state = viewmodel.state.value
     val textfullname = remember { mutableStateOf("") }
     val textSpecialization = remember { mutableStateOf("") }
 
     val context = LocalContext.current
+//////////////////////////////////////////// to work with
 
     Column(modifier = Modifier.padding(6.dp)) {
         TopAppBar(title = {
@@ -106,7 +112,38 @@ fun Addgdgmember(
                     onGdgmemberClicked = { onRemovegdgmember(it) })
             }
         }
-
+////////////////////////////////////// the king
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.LightGray),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if (state.posts != null) { // success
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(state.posts) {
+                        Card(
+                            modifier = Modifier
+                                .padding(horizontal = 10.dp, vertical = 2.5.dp)
+                                .fillMaxWidth(),
+                            backgroundColor = Color.White
+                        ) {
+                            Text(
+                                text = it.title,
+                                modifier = Modifier.padding(16.dp)
+                            )
+                        }
+                    }
+                }
+            } else {
+                if (state.loading) {
+                    CircularProgressIndicator()
+                } else {
+                    state.error?.let { Text(text = it) }
+                }
+            }
+        }
     }
 }
 
