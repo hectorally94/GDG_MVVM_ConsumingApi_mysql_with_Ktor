@@ -10,7 +10,7 @@ interface DomainRepository {
     fun getgdgmembers(): Flow<Resource<List<GdgModel>>>
      fun creategetgdgmembers(postDataObject: PostDataObject): Flow<Resource<PostDataObject>>
 
-     fun addgdgmembers(name:String,description:String)
-     fun Detelegdgmembers(id:String)
-     fun editgdgmembers(id: String,name:String, description:String)
+      suspend fun addgdgmembers(name:String, description:String)
+     suspend fun Detelegdgmembers(id:String)
+     suspend fun editgdgmembers(id: String, name:String, description:String)
 }

@@ -26,7 +26,7 @@ class ApiServiceImpl(
                 body = dataObject
             }
     }
-    override suspend fun addgdgmembers(name:String,description:String) {
+    override suspend fun addgdgmembers(name:String,description:String): String {
             val url = GDGADDMEMBER
             val client = HttpClient()
             return client.post(url) {

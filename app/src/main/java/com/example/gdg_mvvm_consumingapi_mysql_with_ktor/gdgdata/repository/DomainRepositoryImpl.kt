@@ -30,16 +30,16 @@ class DomainRepositoryImpl (private val api: ApiService) : DomainRepository {
         }
     }
 
-    override fun addgdgmembers(name: String, description: String) {
-        TODO("Not yet implemented")
+    override suspend fun addgdgmembers(name: String, description: String) {
+        api.addgdgmembers(name,description)
     }
 
-    override fun Detelegdgmembers(id: String) {
-        TODO("Not yet implemented")
+    override suspend fun Detelegdgmembers(id: String) {
+        api.Detelegdgmembers(id)
     }
 
-    override fun editgdgmembers(id: String, name: String, description: String) {
-        TODO("Not yet implemented")
+    override suspend fun editgdgmembers(id: String, name: String, description: String) {
+        api.editgdgmembers(id,name,description)
     }
 
 

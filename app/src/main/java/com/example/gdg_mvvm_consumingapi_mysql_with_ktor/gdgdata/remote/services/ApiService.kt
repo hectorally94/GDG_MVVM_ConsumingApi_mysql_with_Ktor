@@ -7,7 +7,7 @@ interface ApiService {
 
     suspend fun getgdgmembers(): List<PostDataObject>
     suspend fun creategetgdgmembers(postDataObject: PostDataObject): PostDataObject?
-    suspend fun addgdgmembers(name:String,description:String)
+    suspend fun addgdgmembers(name:String,description:String):String
     suspend fun Detelegdgmembers(id:String)
     suspend fun editgdgmembers(id: String,name:String, description:String)
 

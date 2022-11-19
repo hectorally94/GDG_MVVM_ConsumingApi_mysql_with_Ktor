@@ -14,7 +14,7 @@ import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels
 import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
 
 @Composable
-fun NavigationScreens(ggdViewModel: GgdViewModel){
+fun NavigationScreens(){
     val navController= rememberNavController()
 
     NavHost(navController = navController, startDestination = Gdgscreens.Splash.name){
@@ -24,17 +24,8 @@ fun NavigationScreens(ggdViewModel: GgdViewModel){
       }
         composable(Gdgscreens.Addgdgmember.name){
             Addgdgmember(
-                navController =navController,
-                gdgmembers = emptyList<GdgModel>(),
-                onAddgdgmember = { name, description -> name + description },
-                onRemovegdgmember={ id ->id}
+                navController =navController
             )
-
-            NoteScreen(notes = notesList,
-                onRemoveNote = { ggdViewModel.removeNote(it) },
-                onAddNote = { ggdViewModel.addNote(it) }
-            )
-
         }
         ////
         composable(
@@ -49,11 +40,8 @@ fun NavigationScreens(ggdViewModel: GgdViewModel){
                 navController = navController,
                 backStackEntry.arguments?.getString("id"),
                 backStackEntry.arguments?.getString("name"),
-                backStackEntry.arguments?.getString("description"),
-                onEditgdgmember= { ggdViewModel.editgdgmembers("","","") }
-
+                backStackEntry.arguments?.getString("description")
             )
-            // onEditgdgmember = {id, name, description -> id + name + description },
         }
 
     }

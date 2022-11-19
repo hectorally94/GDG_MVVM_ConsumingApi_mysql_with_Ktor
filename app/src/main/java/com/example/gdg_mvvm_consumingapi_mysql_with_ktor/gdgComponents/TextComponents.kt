@@ -48,18 +48,7 @@ fun MyTextfield(
                 onImeAction()
                 keyboardController?.hide()
             }),
-            trailingIcon = {
-                Icon(
-                    Icons.Default.Clear,
-                    contentDescription = "clear text",
-                    modifier = Modifier
-                        .clickable {
-                          //  TextFieldValue.equals(text)
-                            text.equals("",true)
-                            // textfullname.value = ""
-                        }
-                )
-            },
+
             modifier = modifier
         )
     }

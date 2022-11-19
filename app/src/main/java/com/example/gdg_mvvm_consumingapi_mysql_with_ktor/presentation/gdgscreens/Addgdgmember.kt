@@ -32,10 +32,7 @@ import com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation.Gdgscreens
 
 @Composable
 fun Addgdgmember(
-    navController: NavController,
-    gdgmembers: List<GdgModel>,
-    onAddgdgmember: (name:String, description:String ) ->String,
-    onRemovegdgmember: (id:String ) -> String
+    navController: NavController
 )
 {
 
@@ -90,10 +87,12 @@ fun Addgdgmember(
                 text = "Add Member",
                 onClick = {
                     if (textfullname.toString().isNotEmpty() && textSpecialization.toString().isNotEmpty()) {
-                        onAddgdgmember(
-                            textfullname.toString(),
-                            textSpecialization.toString()
+
+                        viewmodel.addgdgmembers(
+                            textfullname.value,
+                            textSpecialization.value
                         )
+
                         textfullname.value = ""
                         textSpecialization.value = ""
                         Toast.makeText(context, "Member Added",
@@ -104,48 +103,44 @@ fun Addgdgmember(
         }
 
         Divider(modifier = Modifier.padding(10.dp))
-        LazyColumn{
-            items(gdgmembers){ member ->
-                GdgmemberRow(
-                    navController,
-                    gdgMember = member,
-                    onGdgmemberClicked = { onRemovegdgmember(it) })
-            }
-        }
-////////////////////////////////////// the king
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.LightGray),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            if (state.posts != null) { // success
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(state.posts) {
-                        Card(
-                            modifier = Modifier
-                                .padding(horizontal = 10.dp, vertical = 2.5.dp)
-                                .fillMaxWidth(),
-                            backgroundColor = Color.White
-                        ) {
-                            Text(
-                                text = it.title,
-                                modifier = Modifier.padding(16.dp)
-                            )
+
+        if (state.posts != null) { // success
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(state.posts) {
+                    Card(
+                        modifier = Modifier
+                            .clickable {
+                                viewmodel.Detelegdgmembers(it.id)
+                            }
+                            .padding(horizontal = 10.dp, vertical = 2.5.dp)
+                            .fillMaxWidth(),
+                        backgroundColor = Color.White
+                    ) {
+                        Column() {
+                            Text(text = it.name,
+                                style = MaterialTheme.typography.subtitle2)
+                            Text(text = it.description, style = MaterialTheme.typography.subtitle1)
+                            MyImage(modifier = Modifier
+                                .size(50.dp)
+                                .clip(CircleShape)                       // clip to the circle shape
+                                .border(2.dp, Color.White, CircleShape)
+                                .clickable {
+                                    navController.navigate(Gdgscreens.Detailsmember.name + "/${it.id}" + "/${it.name}" + "/${it.description}")
+                                } )
                         }
                     }
                 }
+            }
+        } else {
+            if (state.loading) {
+                CircularProgressIndicator()
             } else {
-                if (state.loading) {
-                    CircularProgressIndicator()
-                } else {
-                    state.error?.let { Text(text = it) }
-                }
+                state.error?.let { Text(text = it) }
             }
         }
+        }
     }
-}
+
 
 @Composable
 fun GdgmemberRow(
@@ -154,10 +149,11 @@ fun GdgmemberRow(
     gdgMember: GdgModel,
     onGdgmemberClicked: (id: String) -> Unit
 ) {
-    Surface(modifier
-        .padding(4.dp)
-        .clip(RoundedCornerShape(topEnd = 33.dp, bottomStart = 33.dp))
-        .fillMaxWidth(),
+    Surface(
+        modifier
+            .padding(4.dp)
+            .clip(RoundedCornerShape(topEnd = 33.dp, bottomStart = 33.dp))
+            .fillMaxWidth(),
         color = Color(0xFFDFE6EB),
         elevation = 6.dp) {
         Column(modifier
@@ -167,7 +163,9 @@ fun GdgmemberRow(
             Text(text = gdgMember.id,
                 style = MaterialTheme.typography.subtitle2)
             Text(text = gdgMember.description, style = MaterialTheme.typography.subtitle1)
-            MyImage(modifier = Modifier.size(50.dp).clip(CircleShape)                       // clip to the circle shape
+            MyImage(modifier = Modifier
+                .size(50.dp)
+                .clip(CircleShape)                       // clip to the circle shape
                 .border(2.dp, Color.White, CircleShape)
                 .clickable {
                     navController.navigate(Gdgscreens.Detailsmember.name + "/${gdgMember.id}" + "/${gdgMember.name}" + "/${gdgMember.description}")

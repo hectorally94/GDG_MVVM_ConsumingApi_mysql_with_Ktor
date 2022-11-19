@@ -9,10 +9,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels.GgdViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,9 +24,9 @@ fun Detailsmember(
     navController: NavController,
     idshared:String?,
     nameshared:String?,
-    descriptionshared:String?,
-    onEditgdgmember: (id:String,name:String,description:String) -> String
+    descriptionshared:String?
 ) {
+    val viewmodel = hiltViewModel<GgdViewModel>()
 
     if (idshared != null) {
         Log.d("idshared",idshared)
@@ -72,16 +74,21 @@ fun Detailsmember(
 
 
         MyButton(
-            modifier =Modifier.width(120.dp).height(70.dp),
+            modifier = Modifier
+                .width(120.dp)
+                .height(70.dp),
             text = "Update Member",
             onClick = {
                 if (textfullname.toString().isNotEmpty() && textSpecialization.toString().isNotEmpty()) {
                     if (idshared != null) {
-                        onEditgdgmember(
-                            idshared,
-                            textfullname.toString(),
-                            textSpecialization.toString()
-                        )
+                        textfullname.value?.let {
+                            textSpecialization.value?.let { it1 ->
+                                viewmodel.editgdgmembers(idshared,
+                                    it,
+                                    it1
+                                )
+                            }
+                        }
                     }
                     textfullname.value = ""
                     textSpecialization.value = ""
