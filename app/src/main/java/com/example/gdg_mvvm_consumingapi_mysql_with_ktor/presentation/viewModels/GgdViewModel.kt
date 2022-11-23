@@ -17,17 +17,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GgdViewModel @Inject constructor(private val domainRepository: DomainRepository) : ViewModel() {
-
    private val _state = mutableStateOf(PostsState())
     val state: State<PostsState> = _state
-
     init {
         domainRepository.getgdgmembers().onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _state.value = PostsState(posts = result.data!!, loading = false, error = null)
                 }
-
                 is Resource.Loading -> {
                     _state.value = PostsState(posts = null, loading = true, error = null)
                 }

@@ -19,26 +19,17 @@ import androidx.compose.ui.text.input.ImeAction
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MyTextfield(
-    modifier: Modifier = Modifier,
-    text: String?,
-    label: String,
-    maxLine: Int = 1,
+    modifier: Modifier = Modifier, text: String?, label: String, maxLine: Int = 1,
     onTextChange: (String) -> Unit,
     onImeAction: () -> Unit = {},
-
     ) {
     val keyboardController = LocalSoftwareKeyboardController.current
-
     if (text != null) {
         TextField(
-            value = text,
-            onValueChange = onTextChange,
+            value = text, onValueChange = onTextChange,
             colors = TextFieldDefaults.textFieldColors(
-                textColor= Color.Black,
-                backgroundColor = Color.Transparent,
-                cursorColor = Color(0xffAC7088),
-                focusedIndicatorColor = Color(0xffAC7088),
-                focusedLabelColor = Color(0xFFDEB6AB)
+                textColor= Color.Black, backgroundColor = Color.Transparent, cursorColor = Color(0xffAC7088),
+                focusedIndicatorColor = Color(0xffAC7088), focusedLabelColor = Color(0xFFDEB6AB)
             ),
             maxLines = maxLine,
             label = { Text(text = label) },
@@ -48,9 +39,7 @@ fun MyTextfield(
                 onImeAction()
                 keyboardController?.hide()
             }),
-
             modifier = modifier
         )
     }
-
 }

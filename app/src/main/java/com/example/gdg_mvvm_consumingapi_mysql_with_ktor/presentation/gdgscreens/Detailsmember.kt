@@ -47,7 +47,6 @@ fun Detailsmember(
         val textSpecialization = remember { mutableStateOf(descriptionshared) }
         val context = LocalContext.current
 
-
         MyTextfield(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -58,6 +57,7 @@ fun Detailsmember(
                         char.isLetter() || char.isWhitespace()
                     }) textfullname.value = it
             })
+
         Spacer(modifier = Modifier.padding(10.dp))
         MyTextfield(
             modifier = Modifier
@@ -71,7 +71,6 @@ fun Detailsmember(
             })
         Spacer(modifier = Modifier.padding(10.dp))
         Text("The textfield has this text: " + textfullname.value)
-
 
         MyButton(
             modifier = Modifier

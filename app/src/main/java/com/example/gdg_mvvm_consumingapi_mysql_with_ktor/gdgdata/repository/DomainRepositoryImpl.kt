@@ -1,5 +1,4 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.repository
-
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgCommon.Resource
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.repository.DomainRepository
@@ -8,7 +7,6 @@ import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.dataobje
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-
 class DomainRepositoryImpl (private val api: ApiService) : DomainRepository {
     override fun getgdgmembers(): Flow<Resource<List<GdgModel>>> = flow {
         try {
@@ -19,7 +17,6 @@ class DomainRepositoryImpl (private val api: ApiService) : DomainRepository {
             emit(Resource.Error(message = e.message ?: "Error"))
         }
     }
-
     override fun creategetgdgmembers(postDataObject: PostDataObject): Flow<Resource<PostDataObject>> = flow {
         try {
             emit(Resource.Loading())
@@ -29,18 +26,14 @@ class DomainRepositoryImpl (private val api: ApiService) : DomainRepository {
             emit(Resource.Error(e.message ?: "Error"))
         }
     }
-
     override suspend fun addgdgmembers(name: String, description: String) {
         api.addgdgmembers(name,description)
     }
-
     override suspend fun Detelegdgmembers(id: String) {
         api.Detelegdgmembers(id)
     }
-
     override suspend fun editgdgmembers(id: String, name: String, description: String) {
         api.editgdgmembers(id,name,description)
     }
-
 
 }

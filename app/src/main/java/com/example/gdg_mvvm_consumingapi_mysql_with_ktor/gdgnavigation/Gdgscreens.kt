@@ -1,4 +1,4 @@
-package com.example.gdgjetpackcomposeconsumingapi_msql.gdgnavigation
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgnavigation
 
 enum class Gdgscreens {
     Splash,
@@ -6,12 +6,12 @@ enum class Gdgscreens {
     Detailsmember;
 
     companion object{
-        fun fromRoute(route:String?):Gdgscreens
+        fun fromRoute(route:String?): Gdgscreens
             =when(route?.substringBefore("/")){
-                Splash.name->Splash
-                Addgdgmember.name->Addgdgmember
-                Detailsmember.name->Detailsmember
-                null->Splash
+                Splash.name-> Splash
+                Addgdgmember.name-> Addgdgmember
+                Detailsmember.name-> Detailsmember
+                null-> Splash
             else->throw IllegalArgumentException("Route $route Not recognize")
             }
     }
