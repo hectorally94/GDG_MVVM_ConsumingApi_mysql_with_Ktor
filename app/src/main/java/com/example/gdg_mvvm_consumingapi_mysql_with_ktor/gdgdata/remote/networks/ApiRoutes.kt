@@ -1,8 +1,7 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.networks
 
 object ApiRoutes {
-    //private const val BASE_URL = "http://192.168.0.49/jetpackCompose" //jOb IP
-    private const val BASE_URL = "http://192.168.0.101:/jetpackCompose" // my  IP
+    private const val BASE_URL = "http://192.168.0.75/jetpackCompose" //jOb IP
 
     const val GDGMEMBERS = "$BASE_URL/getdata.php?myJSON"
     const val GDGADDMEMBER="$BASE_URL/adddata.php?"

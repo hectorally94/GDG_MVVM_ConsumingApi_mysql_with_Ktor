@@ -1,11 +1,11 @@
-package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.viewModels
 
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgCommon.Resource
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgCommon.Resource
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.repository.DomainRepository
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.PostsState

@@ -1,4 +1,4 @@
-package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgnavigation
+package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgnavigation
 
 enum class Gdgscreens {
     Splash,

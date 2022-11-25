@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.services.ApiService
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels.GgdViewModel
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.viewModels.GgdViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

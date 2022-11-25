@@ -26,8 +26,8 @@ import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyButton
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyImage
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgComponents.MyTextfield
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.viewModels.GgdViewModel
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgnavigation.Gdgscreens
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.viewModels.GgdViewModel
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgnavigation.Gdgscreens
 
 @Composable
 fun Addgdgmember(
@@ -77,9 +77,9 @@ fun Addgdgmember(
 
             MyButton(
                 modifier = Modifier
-                    .width(120.dp)
-                    .height(70.dp),
-                text = "Add Member",
+                    .width(90.dp)
+                    .height(60.dp),
+                text = "Add",
                 onClick = {
                     if (textfullname.toString().isNotEmpty() && textSpecialization.toString().isNotEmpty()) {
 
@@ -110,7 +110,7 @@ fun Addgdgmember(
                             .fillMaxWidth(),
                         backgroundColor = Color.White
                     ) {
-                        Column() {
+                        Column(modifier = Modifier.padding( 15.dp)) {
                             Text(text = it.name,
                                 style = MaterialTheme.typography.subtitle2)
                             Text(text = it.description, style = MaterialTheme.typography.subtitle1)
@@ -127,7 +127,9 @@ fun Addgdgmember(
             }
         } else {
             if (state.loading) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(
+                    modifier = Modifier.padding().align(alignment = Alignment.CenterHorizontally)
+                )
             } else {
                 state.error?.let { Text(text = it) }
             }
