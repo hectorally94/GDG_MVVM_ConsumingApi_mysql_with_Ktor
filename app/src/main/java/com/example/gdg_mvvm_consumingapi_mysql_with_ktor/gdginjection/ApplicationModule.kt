@@ -21,6 +21,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApplicationModule {
+
     @Provides
     @Singleton
     fun provideHttpClient(): HttpClient = HttpClient(Android) {
@@ -52,4 +53,5 @@ object ApplicationModule {
     fun provideApi(client: HttpClient): ApiService = ApiServiceImpl(client)
     @Provides
     fun provideRepository(api: ApiService): DomainRepository = DomainRepositoryImpl(api)
+
 }

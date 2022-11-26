@@ -1,6 +1,5 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.networks
 
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.dataobject.PostDataObject
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.networks.ApiRoutes.GDGADDMEMBER
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.networks.ApiRoutes.GDGDELETEMEMBER
@@ -20,10 +19,10 @@ class ApiServiceImpl(
                 url(ApiRoutes.GDGMEMBERS)
                }
     }
-    override suspend fun creategetgdgmembers(dataObject: PostDataObject): PostDataObject? {
+    override suspend fun creategetgdgmembers(postDataObject: PostDataObject): PostDataObject? {
         return  client.post<PostDataObject> {
                 url(ApiRoutes.GDGMEMBERS)
-                body = dataObject
+                body = postDataObject
             }
     }
     override suspend fun addgdgmembers(name:String,description:String): String {

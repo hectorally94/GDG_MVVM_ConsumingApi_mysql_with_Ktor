@@ -1,6 +1,6 @@
 package com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.repository
 
-import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.gdgCommon.Resource
+import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgCommon.Resource
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgDomain.model.GdgModel
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.gdgdata.remote.dataobject.PostDataObject
 import com.example.gdg_mvvm_consumingapi_mysql_with_ktor.presentation.PostsState
